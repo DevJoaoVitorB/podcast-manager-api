@@ -1,0 +1,38 @@
+{
+    "name": "podcast-manager-api",
+    "version": "1.0.0",
+    "description": "Manager for YouTube Podcast Episodes",
+    "main": "index.js",
+    "scripts": {
+        "dev": "tsx watch src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js",
+        "prisma:init": "npx prisma migrate dev --name init && npx prisma generate",
+        "studio": "prisma studio"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DevJoaoVitorB/podcast-manager-api.git"
+    },
+    "keywords": [],
+    "author": "João Vitor B. S. - DevJoaoVitorB",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/DevJoaoVitorB/podcast-manager-api/issues"
+    },
+    "homepage": "https://github.com/DevJoaoVitorB/podcast-manager-api#readme",
+    "devDependencies": {
+        "@types/node": "^25.5.2",
+        "@types/pg": "^8.20.0",
+        "prisma": "^7.7.0",
+        "tsx": "^4.21.0",
+        "typescript": "^6.0.2"
+    },
+    "dependencies": {
+        "@prisma/adapter-pg": "^7.7.0",
+        "@prisma/client": "^7.7.0",
+        "dotenv": "^17.4.1",
+        "pg": "^8.20.0"
+    }
+}

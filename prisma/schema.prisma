@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Episode {
+    id        String    @id @default(cuid())
+    title     String
+    youtubeId String    @unique @map("youtube_id")
+    channel   String
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+
+    categories Category[]
+
+    @@map("episodes")
+}
+
+model Category {
+    id        String    @id @default(cuid())
+    name      String    @unique
+    slug      String    @unique
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+
+    episodes  Episode[]
+
+    @@map("categories")
+}

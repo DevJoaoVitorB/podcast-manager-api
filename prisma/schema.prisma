@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -8,26 +8,26 @@ datasource db {
 }
 
 model Episode {
-    id        String    @id @default(cuid())
-    title     String
-    youtubeId String    @unique @map("youtube_id")
-    channel   String
-    createdAt DateTime  @default(now()) @map("created_at")
-    updatedAt DateTime  @updatedAt @map("updated_at")
+  id        String    @id @default(cuid())
+  title     String
+  youtubeId String    @unique @map("youtube_id")
+  channel   String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
 
-    categories Category[]
+  categories Category[]
 
-    @@map("episodes")
+  @@map("episodes")
 }
 
 model Category {
-    id        String    @id @default(cuid())
-    name      String    @unique
-    slug      String    @unique
-    createdAt DateTime  @default(now()) @map("created_at")
-    updatedAt DateTime  @updatedAt @map("updated_at")
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
 
-    episodes  Episode[]
+  episodes  Episode[]
 
-    @@map("categories")
+  @@map("categories")
 }

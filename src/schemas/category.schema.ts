@@ -6,14 +6,12 @@ export const NameSchema = z
     .trim()
     .min(1, 'Name cannot be empty.')
     .max(255, 'Name cannot exceed 255 characters.');
-export type NameDTO = z.infer<typeof NameSchema>;
 
 export const SlugSchema = z
     .string()
     .trim()
     .toLowerCase()
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Invalid slug format.');
-export type SlugDTO = z.infer<typeof SlugSchema>;
 
 // Objects
 export const BaseDataSchema = z.object({

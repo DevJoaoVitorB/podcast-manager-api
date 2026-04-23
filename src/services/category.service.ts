@@ -79,11 +79,10 @@ export class CategoryService {
 
         if (existingSlug && existingSlug.id !== currentId) issues.push('slug');
 
-        if (issues.length > 0) {
+        if (issues.length > 0)
             throw new AppError(
                 `A category with this ${issues.join(' and ')} already exists`,
                 409,
             );
-        }
     }
 }

@@ -1,7 +1,11 @@
 import { createServer, IncomingMessage, ServerResponse } from 'node:http';
-import { errorHandler } from './middlewares/error.middleware';
-import { categoryController } from '@/container';
-import { categoryRoutes } from './routes/category.routes';
+import { errorHandler } from '@/middlewares/error.middleware';
+import {
+    categoryController,
+    categoryRoutes,
+    episodeController,
+    episodeRoutes,
+} from '@/container';
 
 const server = createServer(
     async (request: IncomingMessage, response: ServerResponse) => {
@@ -11,10 +15,18 @@ const server = createServer(
 
         try {
             if (url?.startsWith('/categories'))
-                return await categoryRoutes(request, response, categoryController);
+                return await categoryRoutes(
+                    request,
+                    response,
+                    categoryController,
+                );
 
-            // if (url?.startsWith('/episodes'))
-            //     return await episodeRoutes(request, response, episodeController);
+            if (url?.startsWith('/episodes'))
+                return await episodeRoutes(
+                    request,
+                    response,
+                    episodeController,
+                );
 
             // Route not found - 404
             response.writeHead(404);
